@@ -139,7 +139,7 @@ async function doExport(analysis: ContractAnalysis, filename: string, market: st
     addText('Summary', 12, true, [26, 18, 8]); addText(analysis.summary || '', 10, false, [50, 50, 50])
     if (analysis.redFlags?.length) {
       y += 6; addText('Red Flags', 12, true, [26, 18, 8])
-      analysis.redFlags.forEach(f => { addText(`• [${f.severity?.toUpperCase()}] ${f.clause || f.title || ''}`, 10, true, [60, 40, 10]); addText(f.explanation || f.description || '', 9, false, [80, 70, 60]) })
+      analysis.redFlags.forEach(f => { addText(`• [${f.severity?.toUpperCase()}] ${f.clause || ''}`, 10, true, [60, 40, 10]); addText(f.explanation || '', 9, false, [80, 70, 60]) })
     }
     doc.save(`fairsign-${filename.replace(/\.[^/.]+$/, '')}.pdf`)
     toast.success('PDF exported!')

@@ -2,13 +2,13 @@
 // frontend/contexts/AppContext.tsx
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
-import type { LangKey } from '@/lib/i18n'
+import type { Lang } from '@/lib/i18n'
 
 type Theme = 'light' | 'dark'
 
 interface AppContextValue {
-  lang: LangKey
-  setLang: (l: LangKey) => void
+  lang: Lang
+  setLang: (l: Lang) => void
   theme: Theme
   setTheme: (t: Theme) => void
   toggleTheme: () => void
@@ -23,12 +23,12 @@ const AppContext = createContext<AppContextValue>({
 })
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<LangKey>('english')
+  const [lang, setLangState] = useState<Lang>('english')
   const [theme, setThemeState] = useState<Theme>('light')
 
   // Load saved preferences on mount
   useEffect(() => {
-    const savedLang = localStorage.getItem('app-lang') as LangKey | null
+    const savedLang = localStorage.getItem('app-lang') as Lang | null
     const savedTheme = localStorage.getItem('app-theme') as Theme | null
     if (savedLang) setLangState(savedLang)
     if (savedTheme) {
@@ -60,11 +60,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  function setLang(l: LangKey) {
+  function setLang(l: Lang) {
     setLangState(l)
     localStorage.setItem('app-lang', l)
     // RTL support for Arabic
-    document.documentElement.dir = l === 'arabic' ? 'rtl' : 'ltr'
+    document.documentElement.dir = 'ltr'
   }
 
   function setTheme(t: Theme) {

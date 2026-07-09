@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Globe, Sun, Moon, ChevronDown } from 'lucide-react'
 import { useApp } from '@/contexts/AppContext'
 import { LANGUAGES } from '@/lib/i18n'
-import type { LangKey } from '@/lib/i18n'
+import type { Lang } from '@/lib/i18n'
 
 export default function LangThemePicker() {
   const { lang, setLang, theme, toggleTheme } = useApp()
@@ -82,7 +82,7 @@ export default function LangThemePicker() {
               {LANGUAGES.map(l => (
                 <button
                   key={l.id}
-                  onClick={() => { setLang(l.id as LangKey); setOpen(false) }}
+                  onClick={() => { setLang(l.id as Lang); setOpen(false) }}
                   style={{
                     display: 'flex',
                     alignItems: 'center',

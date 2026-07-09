@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { buildLabelScores, getOverallScore } from '@/lib/dealReadiness'
@@ -68,7 +68,7 @@ const C = {
   errorText: '#DC2626',
 }
 
-export default function OnboardingPage() {
+function OnboardingContent() {
   const router       = useRouter()
   const params       = useSearchParams()
   const { data: session } = useSession()
@@ -508,5 +508,13 @@ export default function OnboardingPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function OnboardingPage() {
+  return (
+    <Suspense fallback={null}>
+      <OnboardingContent />
+    </Suspense>
   )
 }
