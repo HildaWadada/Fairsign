@@ -1,16 +1,43 @@
 # Dependencies
 node_modules/
+**/node_modules/
 
-# Environment files
+# Python backend
+backend/__pycache__/
+backend/*.py[cod]
+backend/.pytest_cache/
+backend/.venv/
+backend/venv/
+
+# Environment variables
+.env
+.env.*
 backend/.env
 frontend/.env.local
-.env
-.env.local
-.env.*
 
-# Build output
-.next/
+# Next.js frontend
+frontend/.next/
+frontend/out/
+
+# Build files
 dist/
+build/
 
 # Logs
 *.log
+
+# Database files
+*.sqlite3
+*.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
