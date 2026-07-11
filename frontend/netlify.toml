@@ -1,0 +1,6 @@
+[build.environment]
+  # .next/cache is Next.js's internal incremental build cache, not deployed
+  # output. Its webpack pack files can retain raw env var strings from
+  # server-only code paths, which trips Netlify's secrets scanner even
+  # though nothing here is actually shipped to the browser.
+  SECRETS_SCAN_OMIT_PATHS = ".next/cache/**"
